@@ -1,4 +1,4 @@
-# SuperStore
+# Super Store Read-Me
 **Overview**
 Welcome to my repository! This repository contains the SQL queries that i have created to manage the tables and views necessary for the Super Store Sales Dashboard in Power BI.
 
@@ -7,7 +7,7 @@ Link to dashboard: https://app.powerbi.com/view?r=eyJrIjoiMWZhMDdmY2QtZTFhNy00NG
 **Project Description**
 The Super Store Sales Dashboard is a comprehensive data visualization tool designed to provide insights into sales performance, customer behaviour, and operational efficiency for a retail store. The dashboard integrates data from various sources and reports key business metrics, including:
 
-Sales Performance: Track sales trends, revenue, and profitability over time.
+**Sales Performance:** Track sales trends, revenue, and profitability over time.
 Customer Insights: Analyze customer demographics, purchasing patterns, and retention.
 Product Analysis: Examine product performance, inventory levels, and sales by category.
 Geographical Distribution: Visualize sales data across different regions and locations.
