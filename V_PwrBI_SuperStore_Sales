@@ -19,7 +19,7 @@ Select
 	o.row_id,
 	o.order_id,
 	strftime('%Y',o.order_date) as Year,
-    strftime('%Y-%m',o.order_date) as Month,
+    	strftime('%Y-%m',o.order_date) as Month,
 	o.order_date,
 	o.Customer_ID,
 	o.product_id,
