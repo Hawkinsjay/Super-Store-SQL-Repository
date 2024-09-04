@@ -1,0 +1,15 @@
+/*Table created in SQLite*/
+
+CREATE TABLE "SuperStore_Orders" (
+	"Row_ID"	INTEGER,
+	"Order_ID"	TEXT,
+	"Order_Date"	TEXT,
+	"Ship_Date"	TEXT,
+	"Ship_Mode"	TEXT,
+	"Customer_ID"	TEXT,
+	"Product_ID"	TEXT,
+	"Sales"	INTEGER,
+	"Quantity"	INTEGER,
+	"Discount"	INTEGER,
+	"Profit"	INTEGER
+);
