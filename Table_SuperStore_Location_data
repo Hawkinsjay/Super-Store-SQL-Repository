@@ -1,0 +1,8 @@
+/*Table created in SQLite*/
+
+CREATE TABLE "SuperStore_Location_data" (
+	"state"	TEXT,
+	"latitude"	REAL,
+	"longitude"	REAL,
+	"name"	TEXT
+);
