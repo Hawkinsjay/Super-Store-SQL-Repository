@@ -1,7 +1,7 @@
-CREATE VIEW V_PwrBI_SuperStore_Sales as 
 /*SQL query used for PowerBI Super Store Dashboard (Sales Dashboard view)
   Query run within SQLite database*/
 
+CREATE VIEW V_PwrBI_SuperStore_Sales as 
 WITH salesCTE AS(
 	/*Windows Functions wrapped inside CTE to allow better readability and 
 	  additional aggregations within main query if required*/
