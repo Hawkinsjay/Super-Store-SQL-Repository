@@ -7,7 +7,7 @@ Each row represents a unique customer and includes personal details and location
 - TEXT is used for Customer ID, Gender, Segment, Country, City, State, and Region to capture descriptive information. */
 
 CREATE TABLE "SuperStore_Customer_Details" (
-	"Customer_ID"	TEXT,   --Customer ID contains a mixture of letters and numbers
+	"Customer_ID"	TEXT PRIMARY KEY,   --Customer ID contains a mixture of letters and numbers
 	"Customer_Name"	TEXT,
 	"Age"		INTEGER,
 	"Gender"	TEXT,
