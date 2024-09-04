@@ -1,0 +1,39 @@
+CREATE VIEW V_PwrBI_Customer_Demographic AS
+--SQL query used for PowerBI Super Store Dashboard (Customer Demographic View) 
+Select 
+	o.row_id,
+  strftime('%Y-%m',o.order_date) as Month,
+	o.order_date,
+	o.Customer_ID,
+	o.product_id,
+	p.Category,
+	p.Sub_Category,
+	p.Product_Name,
+	ROUND(o.Sales,2) as Sales_Amount,
+	o.Quantity,
+	cd.Customer_Name,
+	cd.Age,
+	CASE
+		WHEN age between 0  AND 17 THEN 'Under 18'
+		WHEN age between 18	AND 25 THEN '18 - 25'
+		WHEN age between 26 AND 35 THEN '26 - 35'
+		WHEN age BETWEEN 36 AND 45 THEN '36 - 45'
+		WHEN age BETWEEN 46 AND 60 THEN '46 - 60'
+		ELSE '60+' 
+		END AS AgeRange,
+	cd.Gender,
+	cd.country,
+	cd.state,
+	cd.city
+FROM
+	SuperStore_Orders o 
+JOIN
+	SuperStore_Customer_Details cd
+ON 
+	o.Customer_id = cd.Customer_ID
+JOIN
+	SuperStore_Products p
+ON	
+	o.Product_ID = p.Product_ID
+ORDER BY
+	o.order_date ASC
