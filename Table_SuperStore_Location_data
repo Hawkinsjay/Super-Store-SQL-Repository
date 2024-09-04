@@ -7,6 +7,8 @@ This table stores geographic information for customers based in various location
 
 
 CREATE TABLE "SuperStore_Location_data" (
+
+	"Location_ID" INTEGER PRIMARY KEY AUTOINCREMENT, --Assigns each row a unique identifier	
 	"state"		TEXT,
 	"latitude"	REAL,
 	"longitude"	REAL,
