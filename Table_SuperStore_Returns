@@ -1,6 +1,6 @@
 /*Table created in SQLite*/
 
 CREATE TABLE "SuperStore_Returns" (
-	"Returned"	TEXT,
-	"Order_ID"	TEXT
+	"Order_ID"	TEXT PRIMARY KEY,
+	"Returned"	TEXT
 );
