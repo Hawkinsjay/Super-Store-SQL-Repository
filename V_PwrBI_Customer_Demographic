@@ -1,5 +1,6 @@
-CREATE VIEW V_PwrBI_Customer_Demographic AS
 --SQL query used for PowerBI Super Store Dashboard (Customer Demographic View) 
+
+CREATE VIEW V_PwrBI_Customer_Demographic AS
 Select 
 	o.row_id,
    	strftime('%Y-%m',o.order_date) as Month,
