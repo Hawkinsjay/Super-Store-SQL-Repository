@@ -1,0 +1,8 @@
+/*Table created in SQLite*/
+
+CREATE TABLE "SuperStore_Products" (
+	"Product_ID"	TEXT,
+	"Category"	TEXT,
+	"Sub_Category"	TEXT,
+	"Product_Name"	TEXT
+);
