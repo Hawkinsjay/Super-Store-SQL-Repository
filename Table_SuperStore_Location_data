@@ -1,8 +1,14 @@
-/*Table created in SQLite*/
+/*Table created in SQLite
+
+This table stores geographic information for customers based in various locations.
+
+- State and Name are defined as TEXT to capture descriptive text information
+- Latitude and Longitude are defined as REAL to  capture coordinates/ fractional numbers*/
+
 
 CREATE TABLE "SuperStore_Location_data" (
-	"state"	TEXT,
+	"state"		TEXT,
 	"latitude"	REAL,
 	"longitude"	REAL,
-	"name"	TEXT
+	"name"		TEXT
 );
