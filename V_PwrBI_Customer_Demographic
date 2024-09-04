@@ -1,4 +1,4 @@
---SQL query used for PowerBI Super Store Dashboard (Customer Demographic View) 
+/*SQL query used for PowerBI Super Store Dashboard (Customer Demographic View)*/
 
 CREATE VIEW V_PwrBI_Customer_Demographic AS
 Select 
