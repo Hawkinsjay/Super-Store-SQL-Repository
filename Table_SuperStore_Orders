@@ -1,4 +1,9 @@
-/*Table created in SQLite*/
+/*Table created in SQLite
+
+This table stores detailed information about orders placed for the SuperStore. 
+
+
+*/
 
 CREATE TABLE "SuperStore_Orders" (
 	"Row_ID"	INTEGER,
