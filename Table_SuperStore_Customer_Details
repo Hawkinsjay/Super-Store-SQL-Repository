@@ -1,3 +1,5 @@
+/*Table created in SQLite*/
+
 CREATE TABLE "SuperStore_Customer_Details" (
 	"Customer_ID"	TEXT,
 	"Customer_Name"	TEXT,
