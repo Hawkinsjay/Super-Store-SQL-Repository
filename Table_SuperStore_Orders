@@ -7,13 +7,13 @@ This table stores detailed information about orders placed for the SuperStore.
 
 CREATE TABLE "SuperStore_Orders" (
 	"Row_ID"	INTEGER,
-	"Order_ID"	TEXT,
+	"Order_ID"	TEXT, --Order ID contains a mixture of letters and numbers
 	"Order_Date"	TEXT,
 	"Ship_Date"	TEXT,
 	"Ship_Mode"	TEXT,
-	"Customer_ID"	TEXT,
+	"Customer_ID"	TEXT, --Customer ID contains a mixture of letters and numbers
 	"Product_ID"	TEXT,
-	"Sales"	INTEGER,
+	"Sales"		INTEGER,
 	"Quantity"	INTEGER,
 	"Discount"	INTEGER,
 	"Profit"	INTEGER
