@@ -1,10 +1,10 @@
 /*SQL query used for PowerBI Super Store Dashboard (Sales Dashboard view)
   Query run within SQLite database*/
 
+/*Windows Functions wrapped inside CTE to allow better readability and additional aggregations within main query if required*/
+
 CREATE VIEW V_PwrBI_SuperStore_Sales as 
 WITH salesCTE AS(
-	/*Windows Functions wrapped inside CTE to allow better readability and 
-	  additional aggregations within main query if required*/
 	Select 
 		Row_id,
 		ROUND(SUM(sales) OVER(PARTITION BY order_date), 2) as DailySalesTotal,
