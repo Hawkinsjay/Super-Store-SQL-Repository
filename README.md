@@ -17,6 +17,6 @@ Product Analysis: Examining product performance, average monthly sales and sales
 
 Geographical Distribution: Visualising sales data across different regions and locations.
 
-Link to dashboard: https://app.powerbi.com/view?r=eyJrIjoiMWZhMDdmY2QtZTFhNy00NGE1LTg5YWYtNTZlYTRhMGYwYzEwIiwidCI6IjM4Y2M1NjZhLTAxNGYtNDI2NC04Y2QyLWVlNTk5NDRlMGFlMiJ9&pageName=ReportSection
+Link to dashboard: [https://app.powerbi.com/view?r=eyJrIjoiMWZhMDdmY2QtZTFhNy00NGE1LTg5YWYtNTZlYTRhMGYwYzEwIiwidCI6IjM4Y2M1NjZhLTAxNGYtNDI2NC04Y2QyLWVlNTk5NDRlMGFlMiJ9&pageName=ReportSection](https://app.powerbi.com/view?r=eyJrIjoiNGEyZjVhNjItN2E3Ny00NTQ3LWE4NjctZjdlMDE3NDQ4OTE0IiwidCI6IjM4Y2M1NjZhLTAxNGYtNDI2NC04Y2QyLWVlNTk5NDRlMGFlMiJ9&pageName=ReportSection)
 
 
