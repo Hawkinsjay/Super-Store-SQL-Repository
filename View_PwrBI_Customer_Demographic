@@ -1,40 +1,53 @@
 /*SQL query used for PowerBI Super Store Dashboard (Customer Demographic View)*/
 
 CREATE VIEW V_PwrBI_Customer_Demographic AS
-Select 
-	o.row_id,
-   	strftime('%Y-%m',o.order_date) as Month,
-	o.order_date,
-	o.Customer_ID,
-	o.product_id,
-	p.Category,
-	p.Sub_Category,
-	p.Product_Name,
-	ROUND(o.Sales,2) as Sales_Amount,
-	o.Quantity,
-	cd.Customer_Name,
-	cd.Age,
-	CASE
-		WHEN age between 0  AND 17 THEN 'Under 18'
-		WHEN age between 18	AND 25 THEN '18 - 25'
-		WHEN age between 26 AND 35 THEN '26 - 35'
-		WHEN age BETWEEN 36 AND 45 THEN '36 - 45'
-		WHEN age BETWEEN 46 AND 60 THEN '46 - 60'
-		ELSE '60+' 
+
+WITH DemographicCTE AS(
+	SELECT
+		row_id,
+		strftime ('%Y-%m',order_date) as Month,
+		ROUND(Avg(age) OVER(PARTITION BY strftime('%Y-%m',order_date)),0) as AveragePurchaseAge,
+		CASE
+		WHEN age between 0  AND 17 THEN "Under 18"
+		WHEN age between 18	AND 25 THEN "18 - 25"
+		WHEN age between 26 AND 35 THEN "26 - 35"
+		WHEN age BETWEEN 36 AND 45 THEN "36 - 45"
+		WHEN age BETWEEN 46 AND 60 THEN "46 - 60"
+		ELSE "60+" 
 		END AS AgeRange,
-	cd.Gender,
-	cd.country,
-	cd.state,
-	cd.city
+		MIN(order_date) OVER(PARTITION BY Customer_ID) as FirstPurchase
+	FROM 
+		V_All_SuperStore_Data
+)
+
+Select 
+	s.Row_id as Row_id,
+	d.month as Month,
+	d.AveragePurchaseAge as AveragePurchaseAge,
+	d.AgeRange,
+	s.Order_Date as Order_Date,
+	s.Customer_ID as Customer_ID,
+	(CASE
+		WHEN d.FirstPurchase = s.Order_Date THEN 'New Customer'
+		ELSE 'Returning Customer'
+		END) As CustomerStatus,
+	s.Product_ID as Product_ID,
+	s.Product_Name as Product_Name,
+	s.Sales as Sales,
+	s.Category as Category,
+	s.Sub_Category as Sub_Category,
+	s.Customer_name as Customer_name,
+	s.age as Age,
+	(CASE
+		WHEN s.gender = 'M' then 'Male'
+		WHEN s.gender = 'F' then 'Female'
+		END) as Gender,
+	s.Region as Region,
+	s.State as State,
+	s.City	as City
 FROM
-	SuperStore_Orders o 
+	V_All_SuperStore_Data s
 JOIN
-	SuperStore_Customer_Details cd
-ON 
-	o.Customer_id = cd.Customer_ID
-JOIN
-	SuperStore_Products p
-ON	
-	o.Product_ID = p.Product_ID
-ORDER BY
-	o.order_date ASC
+	DemographicCTE d
+ON s.Row_ID = d.Row_ID
+ORDER BY order_date asc
