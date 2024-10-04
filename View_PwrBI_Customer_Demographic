@@ -18,8 +18,10 @@ WITH DemographicCTE AS(
 		MIN(o.order_date) OVER(PARTITION BY o.Customer_ID) as FirstPurchase
 	FROM 
 		SuperStore_Orders o
-	JOIN	SuperStore_Customer_Details c
-	ON	o.customer_id = c.customer_id
+	JOIN	
+		SuperStore_Customer_Details c
+	ON	
+		o.customer_id = c.customer_id
 )
 
 Select 
@@ -33,11 +35,11 @@ Select
 		WHEN d.FirstPurchase = o.Order_Date THEN 'New Customer'
 		ELSE 'Returning Customer'
 		END) As CustomerStatus,
-	o.Product_ID as Product_ID,
-	o.Product_Name as Product_Name,
+	p.Product_ID as Product_ID,
+	p.Product_Name as Product_Name,
 	o.Sales as Sales,
-	o.Category as Category,
-	o.Sub_Category as Sub_Category,
+	p.Category as Category,
+	p.Sub_Category as Sub_Category,
 	c.Customer_name as Customer_name,
 	c.age as Age,
 	(CASE
@@ -51,8 +53,15 @@ FROM
 	SuperStore_Orders o
 JOIN	
 	SuperStore_Customer_Details c
-ON o.customer_id = c.customer_id
+ON 
+	o.customer_id = c.customer_id
+JOIN
+	SuperStore_Products p
+ON	
+	o.Product_ID = p.Product_ID
 JOIN
 	DemographicCTE d
-ON O.Row_ID = d.Row_ID
-ORDER BY order_date asc
+ON 
+	O.Row_ID = d.Row_ID
+
+ORDER BY order_date asc;
