@@ -38,15 +38,15 @@ Select
 	o.Sales as Sales,
 	o.Category as Category,
 	o.Sub_Category as Sub_Category,
-	o.Customer_name as Customer_name,
-	o.age as Age,
+	c.Customer_name as Customer_name,
+	c.age as Age,
 	(CASE
 		WHEN c.gender = 'M' then 'Male'
 		WHEN c.gender = 'F' then 'Female'
 		END) as Gender,
-	o.Region as Region,
-	o.State as State,
-	o.City	as City
+	c.Region as Region,
+	c.State as State,
+	c.City	as City
 FROM 
 	SuperStore_Orders o
 JOIN	
