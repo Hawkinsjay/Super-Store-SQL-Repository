@@ -5,15 +5,11 @@ CREATE VIEW V_PwrBI_Customer_Demographic AS
 WITH DemographicCTE AS(
 	SELECT
 		o.row_id,
-		strftime ('%M',o.order_date) as Month,
-		ROUND(Avg(c.age) OVER(PARTITION BY strftime('%Y-%m',o.order_date)),0) as AveragePurchaseAge,
+		strftime('%Y-%m',o.order_date) as Month,
 		MIN(o.order_date) OVER(PARTITION BY o.Customer_ID) as FirstPurchase
 	FROM 
 		SuperStore_Orders o
-	JOIN	
-		SuperStore_Customer_Details c
-	ON	
-		o.customer_id = c.customer_id
+	JOIN
 )
 
 Select 
