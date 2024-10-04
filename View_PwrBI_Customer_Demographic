@@ -1,7 +1,5 @@
 /*SQL query used for PowerBI Super Store Dashboard (Customer Demographic View)*/
 
-CREATE VIEW V_PwrBI_Customer_Demographic AS
-
 WITH DemographicCTE AS(
 	SELECT
 		o.row_id,
@@ -9,14 +7,11 @@ WITH DemographicCTE AS(
 		MIN(o.order_date) OVER(PARTITION BY o.Customer_ID) as FirstPurchase
 	FROM 
 		SuperStore_Orders o
-	JOIN
 )
 
 Select 
 	o.Row_id as Row_id,
 	d.month as Month,
-	d.AveragePurchaseAge as AveragePurchaseAge,
-	d.AgeRange,
 	o.Order_Date as Order_Date,
 	o.Customer_ID as Customer_ID,
 	(CASE
