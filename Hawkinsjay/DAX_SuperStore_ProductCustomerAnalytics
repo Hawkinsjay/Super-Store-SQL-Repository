@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------------------------------------------------------
 
 ProfitMarginPercentage = SUM(V_PwrBI_SuperStore_Sales[Profit]) / SUM(V_PwrBI_SuperStore_Sales[Sale_Amount])
-NumberOfOrders = DISTINCTCOUNT(V_PwrBI_SuperStore_Sales[Order_ID])
+NumberOfOrders = DISTINCTCOUNT(V_PwrBI_SuperStore_Sales[Order_ID]) 
 ---------------------------------------------------------------------------------------------------------------------------
 //Calculates the percentage of customers that have made more than 1 purchase
 Repeat Purchase Rate = 
