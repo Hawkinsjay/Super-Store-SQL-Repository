@@ -1,5 +1,3 @@
-/*SQL query used for PowerBI Super Store Dashboard (Sales Dashboard view)
-
 CREATE VIEW V_PwrBI_SuperStore_Sales as 
 
 WITH salesCTE AS(
