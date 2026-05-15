@@ -1,0 +1,65 @@
+// This file contains a handful of PBI DAX calculations used to build the Super Store Product & Customer Analytics Dashboard
+---------------------------------------------------------------------------------------------------------------------------
+
+ProfitMarginPercentage = SUM(V_PwrBI_SuperStore_Sales[Profit]) / SUM(V_PwrBI_SuperStore_Sales[Sale_Amount])
+NumberOfOrders = DISTINCTCOUNT(V_PwrBI_SuperStore_Sales[Order_ID])
+---------------------------------------------------------------------------------------------------------------------------
+//Calculates the percentage of customers that have made more than 1 purchase
+Repeat Purchase Rate = 
+VAR TotalOrders =
+    DISTINCTCOUNT(V_PwrBI_SuperStore_Sales[Customer_ID])
+
+VAR ReturningCustomers =
+    COUNTROWS(
+        FILTER(
+            VALUES(V_PwrBI_SuperStore_Sales[Customer_ID]),
+            CALCULATE(
+                DISTINCTCOUNT(V_PwrBI_SuperStore_Sales[Order_ID])
+            ) > 1))
+
+RETURN
+    DIVIDE(ReturningCustomers, TotalOrders, 0)
+-------------------------------------------------------------------------------------------------------------------------
+AverageOrderValue = 
+    DIVIDE(
+        SUM(V_PwrBI_SuperStore_Sales[Sale_Amount]), DISTINCTCOUNT(V_PwrBI_SuperStore_Sales[Order_ID]))
+
+//Grouping Profit Margin percentages - used as in filter for scatter plot
+Profit Margin Buckets = 
+VAR Margin = [ProfitMarginPercentage]
+RETURN
+    SWITCH(
+        TRUE(),
+        Margin < 0, "<0%",
+        Margin < 0.1, "0-10%",
+        Margin < 0.2, "10-20%",
+        Margin < 0.3, "20-30%",
+        Margin < 0.4, "30-40%",
+        Margin < 0.5, "40-50%",
+        "50%+")
+-------------------------------------------------------------------------------------------------------------------------
+// Text field showing percentage change (increase/decrease) compared to previous year
+Revenue YoY % Display = 
+VAR CurrentYear =
+    VALUE(SELECTEDVALUE(V_PwrBI_SuperStore_Sales[Year]))
+VAR CurrentRevenue =
+    SUM(V_PwrBI_SuperStore_Sales[Sale_Amount])
+VAR PreviousRevenue =
+    CALCULATE(
+        SUM(V_PwrBI_SuperStore_Sales[Sale_Amount]),
+        FILTER(
+            ALL(V_PwrBI_SuperStore_Sales[Year]),
+            VALUE(V_PwrBI_SuperStore_Sales[Year]) = CurrentYear - 1))
+VAR YoY =
+    DIVIDE(
+        CurrentRevenue - PreviousRevenue,
+        PreviousRevenue,
+        0)
+
+RETURN
+    IF(
+        YoY > 0,
+        "+" & FORMAT(YoY, "0.00%"),
+        FORMAT(YoY, "0.00%"))
+    & " vs. Prior Period"
+
